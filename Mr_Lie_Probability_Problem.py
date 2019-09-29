@@ -45,11 +45,13 @@ def draw_card():
                 card_count['SSR'] += 1
 
             else:
+                # 太菜了，DD
                 card_count['SR'] += 1
 
         else:
             res = random.uniform(0, 1)
 
+            # NB嗷
             if res <= card['SSR']:
 
                 if first_SSR == 0:
@@ -58,10 +60,12 @@ def draw_card():
                 card_count['SSR'] += 1
                 counter = 0
 
+            # 出货了，可惜是SR
             elif res <= card['SSR'] + card['SR'] and res > card['SSR']:
                 card_count['SR'] += 1
                 counter = 0
 
+            # 非酋的命
             else:
                 card_count['R'] +=1
                 counter += 1
