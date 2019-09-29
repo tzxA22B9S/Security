@@ -82,8 +82,9 @@ class X_Scan(object):
                 return False
 
 # 2019.9.11，run函数未更新,更新mencached_check
+# 2019.9.23，run函数更新
 #-----------------------------------------------------------------------------------------
-        def Memcache_check(self, ip, port=11211, timeout=3):
+        def Memcached_check(self, ip, port=11211, timeout=3):
 
             try:
 
@@ -132,8 +133,8 @@ class X_Scan(object):
                                 self.result.append(ip)
                         
                         elif port == 11211:
-                            if self.Memcache_check(ip):
-                                # print('27017')
+                            if self.Memcached_check(ip):
+                                # print('11211')
                                 self.result.append(ip)
                 
                 except Exception as e:
