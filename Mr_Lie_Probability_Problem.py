@@ -8,6 +8,9 @@
 # (2)出现ssr的次数
 
 import random
+import time
+import numpy as np
+import matplotlib.pyplot as plt
 
 # 概率公示
 card = {'SSR': 0.015, 'SR': 0.030, 'R': 0.955}
@@ -72,9 +75,51 @@ def draw_card():
 
     #print('第一次抽中SSR是第' + str(first_SSR) + '次；SSR概率为' + str(card_count['SSR']) + '%')
 
+    return first_SSR, card_count['SSR']
+
+# 多次试验
+def test(times):
+    first_num_lst = [0,] * times
+    SSR_num_lst = [0,] * times
+
+    for num in range(0, times):
+        first_num_lst[num], SSR_num_lst[num] = draw_card()
+
+    return np.mean(first_num_lst), np.mean(SSR_num_lst)
 
 # 画图
 def main():
-    pass
 
-draw_card()
+    test_num = ['1', '10', '50', '100', '200', '500', '1000', '5000', '10000', '50000', '100000', '500000', '1000000']
+
+    length = len(test_num)
+    first_num_avg_lst = [0,] * length
+    SSR_num_avg_lst = [0,] * length
+
+    for num in range(0, length):
+
+        time_start = time.time()
+
+        first_num_avg_lst[num], SSR_num_avg_lst[num] = test(int(test_num[num]))
+
+        time_end = time.time()
+
+        print(str(time_end - time_start) + 's [for ' + str(test_num[num]) + ' times]')
+
+    plt.figure(figsize=(8, 10))
+    plt.subplot(211)
+    plt.plot(test_num, first_num_avg_lst)
+    plt.title('AVERAGE \'FIRST TIME\' OF \'SSR\' & AVERAGE \'PROBABILITY\' OF \'SSR\'')
+    plt.xlabel('time of test')
+    plt.ylabel('\'first time\' of \'SSR\'')
+
+    plt.subplot(212)
+    plt.plot(test_num, SSR_num_avg_lst)
+    plt.xlabel('times of test')
+    plt.ylabel('\'probability\' of \'SSR\'')
+
+    plt.show()
+
+# 开始测试
+if __name__ == "__main__":
+    main()
