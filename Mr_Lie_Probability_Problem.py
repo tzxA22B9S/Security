@@ -1,4 +1,4 @@
-# SSR 1.5%123
+# SSR 1.5%
 # SR 3%
 # R 95.5%
 # 每10连必定出SSR或者SR
@@ -39,7 +39,7 @@ def draw_card():
             if res <= card['SSR']:
 
                 if first_SSR == 0:
-                    first_SSR = num
+                    first_SSR = num + 1
 
                 # 你又多了一个SSR
                 card_count['SSR'] += 1
@@ -66,12 +66,11 @@ def draw_card():
                 card_count['R'] +=1
                 counter += 1
 
-    print('第一次抽中SSR是第' + str(first_SSR) + '次；SSR概率为' + str(card_count['SSR']) + '%')
+    #print('第一次抽中SSR是第' + str(first_SSR) + '次；SSR概率为' + str(card_count['SSR']) + '%')
 
 
 # 画图
 def main():
     pass
 
-
-draw_card();
+draw_card()
