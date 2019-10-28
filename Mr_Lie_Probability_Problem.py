@@ -28,7 +28,7 @@ def draw_card():
     card_count = {'SSR': 0, 'SR': 0, 'R': 0}
 
     # 抽卡100次
-    for num in range(0, 100):
+    for num in range(0, 200):
 
         # DD,你终于要出货了
         if counter == 9:
