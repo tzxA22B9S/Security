@@ -80,7 +80,7 @@ def GUI():
     while True:
         password = easygui.enterbox('Enter your password to check for compliance', 'Weak Password')
         easygui.msgbox(SecurityCheck(password))
- 
+
 if __name__ == "__main__":
     GUI()
     

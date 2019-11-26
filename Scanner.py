@@ -25,11 +25,6 @@ class X_Scan(object):
             self.__port = port
             self.__timeout = timeout
 
-        # 测试是否存在mongodb未授权访问漏洞
-        # 2019.9.12 更新
-        # 采用socket连接，新的连接字符待定（连不上），目前暂时采用网上的
-        # 采用新函数 list_dbnames(失败)
-        # 采用原函数 采用新的包 准确度待测试
         def mongodb_check(self, ip, port=27017, timeout=3):
 
             #global dbname
@@ -70,7 +65,6 @@ class X_Scan(object):
             except Exception as e:
                 return False
         
-        # 测试是否存在redis未授权访问漏洞
         def redis_check(self, ip, port=6379):
 
             try:
@@ -81,9 +75,6 @@ class X_Scan(object):
             except Exception as e:
                 return False
 
-# 2019.9.11，run函数未更新,更新mencached_check
-# 2019.9.23，run函数更新
-#-----------------------------------------------------------------------------------------
         def Memcached_check(self, ip, port=11211, timeout=3):
 
             try:
@@ -99,8 +90,6 @@ class X_Scan(object):
 
             except Exception as e:
                 return False
-        
-#-----------------------------------------------------------------------------------------
 
         # 执行
         def run(self):
